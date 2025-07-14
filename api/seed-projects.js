@@ -1,7 +1,7 @@
 import { sql } from '@vercel/postgres';
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend(process.env.re_SqvFJ2qT_FnpAbZXBfnFcHXhmeFU3xV3g);
 
 export default async function handler(req, res) {
   try {
