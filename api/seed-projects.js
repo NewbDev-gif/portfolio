@@ -1,7 +1,8 @@
 import { sql } from '@vercel/postgres';
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.re_SqvFJ2qT_FnpAbZXBfnFcHXhmeFU3xV3g);
+// This is the CORRECT way to access your secret key.
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export default async function handler(req, res) {
   try {
@@ -16,8 +17,9 @@ export default async function handler(req, res) {
     const { rows: projects } = await sql`SELECT * FROM projects;`;
     
     await resend.emails.send({
+      // This line is now syntactically correct.
       from: 'Portfolio System <rhobertcarwana@gmail.com>',
-      to: ['rhobertcarwana@gmail.com'], // <-- CHANGE THIS TO YOUR EMAIL
+      to: ['rhobertcarwana@gmail.com'],
       subject: '✅ Success! Portfolio Database Has Been Seeded.',
       html: `<h3>Database seeding was successful!</h3><p>Your database now contains ${projects.length} projects.</p>`
     });
