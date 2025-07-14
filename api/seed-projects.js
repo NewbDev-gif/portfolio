@@ -16,7 +16,7 @@ export default async function handler(req, res) {
     const { rows: projects } = await sql`SELECT * FROM projects;`;
     
     await resend.emails.send({
-      from: 'Portfolio System <eltegreelyaya@gmail.com>',
+      from: 'Portfolio System <rhobertcarwana@gmail.com>',
       to: ['rhobertcarwana@gmail.com'], // <-- CHANGE THIS TO YOUR EMAIL
       subject: '✅ Success! Portfolio Database Has Been Seeded.',
       html: `<h3>Database seeding was successful!</h3><p>Your database now contains ${projects.length} projects.</p>`
