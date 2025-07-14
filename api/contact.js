@@ -1,0 +1,28 @@
+import { Resend } from 'resend';
+
+const resend = new Resend(process.env.RESEND_API_KEY);
+
+export default async function handler(req, res) {
+  const { name, email, message } = req.body;
+
+  try {
+    const { data, error } = await resend.emails.send({
+      from: 'Portfolio Contact Form <onboarding@resend.dev>',
+      to: ['rhobertcarwanal@gmail.com'], // <-- CHANGE THIS TO YOUR EMAIL
+      subject: `New Portfolio Message from ${name}`,
+      html: `
+        <p><strong>From:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Message:</strong> ${message}</p>
+      `,
+    });
+
+    if (error) {
+      return res.status(400).json(error);
+    }
+
+    res.status(200).json({ message: "Message sent successfully!" });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+}

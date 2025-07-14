@@ -1,0 +1,21 @@
+{
+  "name": "my-vercel-portfolio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NewbDev-gif/portfolio/upload/main"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@vercel/postgres": "^0.10.0",
+    "resend": "^4.6.0"
+  }
+}
